@@ -1,0 +1,14 @@
+Validation
+To Monitor Deployments:
+
+kubectl get deployments
+kubectl get pods
+kubectl get svc
+
+Test Green Environment:
+
+Access the application using the service's external IP. Run automated tests or manually validate the green deployment.
+
+Verify Traffic Switch:
+
+Ensure traffic is routed to the green deployment. Use the service's external IP or logs.
