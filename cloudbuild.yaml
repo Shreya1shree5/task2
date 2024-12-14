@@ -3,12 +3,12 @@ steps:
     args:
       - 'build'
       - '-t'
-      - 'us-central1-docker.pkg.dev/YOUR_PROJECT_ID/my-repo/demo-app:$BUILD_ID'
+      - 'us-central1-docker.pkg.dev/cts01-shreyashree/my-repo/demo-app:$BUILD_ID'
       - '.'
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'push'
-      - 'us-central1-docker.pkg.dev/YOUR_PROJECT_ID/my-repo/demo-app:$BUILD_ID'
+      - 'us-central1-docker.pkg.dev/cts01-shreyashree/my-repo/demo-app:$BUILD_ID'
   - name: 'gcr.io/cloud-builders/kubectl'
     env:
       - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
