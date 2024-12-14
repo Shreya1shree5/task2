@@ -1,27 +1,18 @@
 steps:
-  - name: 'gcr.io/cloud-builders/docker'
+  # Step 1: Build the Docker image
+  - name: 'us-central1-docker.pkg.dev/cloud-builders/docker'
     args:
       - 'build'
       - '-t'
       - 'us-central1-docker.pkg.dev/cts01-shreyashree/my-repo/demo-app:$BUILD_ID'
       - '.'
-  - name: 'gcr.io/cloud-builders/docker'
+
+  # Step 2: Push the Docker image to Artifact Registry
+  - name: 'us-central1-docker.pkg.dev/cloud-builders/docker'
     args:
       - 'push'
       - 'us-central1-docker.pkg.dev/cts01-shreyashree/my-repo/demo-app:$BUILD_ID'
-  - name: 'gcr.io/cloud-builders/kubectl'
-    env:
-      - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
-      - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
-    args:
-      - 'apply'
-      - '-f'
-      - 'deployment.yaml'
-  - name: 'gcr.io/cloud-builders/kubectl'
-    env:
-      - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
-      - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
-    args:
-      - 'apply'
-      - '-f'
-      - 'service.yaml'
+
+images:
+  # Specify the image built and pushed to Artifact Registry
+  - 'us-central1-docker.pkg.dev/cts01-shreyashree/my-repo/demo-app:$BUILD_ID'
