@@ -1,6 +1,6 @@
 steps:
   # Step 1: Build the Docker image
-  - name: 'us-central1-docker.pkg.dev/cloud-builders/docker'
+  - name: 'us-docker.pkg.dev/cloud-builders/docker'
     args:
       - 'build'
       - '-t'
@@ -8,7 +8,7 @@ steps:
       - '.'
 
   # Step 2: Push the Docker image to Artifact Registry
-  - name: 'us-central1-docker.pkg.dev/cloud-builders/docker'
+  - name: 'us-docker.pkg.dev/cloud-builders/docker'
     args:
       - 'push'
       - 'us-central1-docker.pkg.dev/cts01-shreyashree/my-repo/demo-app:$BUILD_ID'
